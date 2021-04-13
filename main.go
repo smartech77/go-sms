@@ -13,7 +13,7 @@ type SiminnSMS struct {
 	SendFrom string
 }
 
-func (s *SiminnSMS) SendSMS2(text string, number string) (error, bool) {
+func (s *SiminnSMS) SendSMS(text string, number string) (error, bool) {
 	response, err := http.PostForm(s.URL+"push", url.Values{
 		"l":      {s.Username},
 		"p":      {s.Password},

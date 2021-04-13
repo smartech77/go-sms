@@ -17,7 +17,7 @@ func Test_single_sms(t *testing.T) {
 	siminn.Password = os.Getenv("PASSWORD")
 	siminn.URL = "https://vasp.siminn.is/smap/"
 	siminn.SendFrom = os.Getenv("FROM")
-	err, ok := siminn.SendSMS2("hello from siminn sms service", os.Getenv("NUMBER"))
+	err, ok := siminn.SendSMS("hello from siminn sms service", os.Getenv("NUMBER"))
 	if err != nil {
 		log.Println(err)
 		t.Fatal("Failed fetching token")
