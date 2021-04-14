@@ -29,13 +29,13 @@ func (s *SiminnSMS) SendSMS(ctx context.Context, content string, number string) 
 		return err, false, 0
 	}
 
-	urlContsruction := r.URL.Query()
-	urlContsruction.Set("l", s.Username)
-	urlContsruction.Set("p", s.Password)
-	urlContsruction.Set("A", s.SendFrom)
-	urlContsruction.Set("T", content)
-	urlContsruction.Set("msisdn", number)
-	r.URL.RawQuery = urlContsruction.Encode()
+	newQuery := r.URL.Query()
+	newQuery.Set("l", s.Username)
+	newQuery.Set("p", s.Password)
+	newQuery.Set("A", s.SendFrom)
+	newQuery.Set("T", content)
+	newQuery.Set("msisdn", number)
+	r.URL.RawQuery = newQuery.Encode()
 
 	r = r.WithContext(ctx)
 
