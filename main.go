@@ -19,9 +19,10 @@ type SiminnSMS struct {
 }
 
 // SendSMS
-// This function send a text message using Siminn SMS api ( see docs in READMY )
+// This function send a text message using Siminn SMS api ( see docs in README )
 // At this moment it's a bit hacky because the API does not use HTTP Response
-// Codes in a proper manner, this will be updates as the service develops
+// Codes as suggested by the HTTP speficifaction, this is no ones fault
+// sometimes things just turn out that way, we will accomidate for this.
 func (s *SiminnSMS) SendSMS(ctx context.Context, content string, number string) (error, bool, int) {
 	client := &http.Client{}
 	r, err := http.NewRequest(http.MethodPost, s.URL+"push", nil)
